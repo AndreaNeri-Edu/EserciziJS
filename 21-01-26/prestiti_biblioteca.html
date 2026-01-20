@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Esercizio 2: Gestione Prestiti Biblioteca</title>
+</head>
+<body>
+    <script>
+
+        let lettori = [
+            {nome: "Andrea", giorniBase: 7, prestiti: [14, 10, 6]}
+        ];
+
+        function AggiungiLetteri(n) {
+            for (let i=0; i<n; i++) {
+                let nome = prompt("Inserisci nome lettore "+(i+1)+":");
+                let giorniBase = parseInt(prompt("Inserisci numero giorni base: "));
+                let numPrestiti = parseInt(prompt("Inserisci numero di prestiti: "));
+
+                let prestiti = new Array(numPrestiti);
+                for (let j=0; j<numPrestiti; j++) {
+                    prestiti[j] = parseInt(prompt("Inserisci giorni prestito "+(j+1)+": "));
+                }
+                lettori.push({nome: nome, giorniBase: giorniBase, prestiti: prestiti});
+            }
+            console.log("Array lettori aggiornato:");
+            console.log(lettori);
+        }
+
+        function AggiornaGiorni(giorniBase, ...prestiti) {
+            let totale = giorniBase;
+
+            for (let i=0; i<prestiti.length; i++) {
+                totale += prestiti[i];
+            }
+            return totale;
+        }
+
+        const numLettori = parseInt(prompt("Quanti lettori vuoi aggiungere?"));
+        AggiungiLetteri(numLettori);
+
+        for (let i=0; i<lettori.length; i++) {
+            const totale = AggiornaGiorni(lettori[i].giorniBase, ...lettori[i].prestiti);
+            console.log(lettori[i].nome+": " +totale+" giorni");
+        }
+
+    </script>
+</body>
+</html>

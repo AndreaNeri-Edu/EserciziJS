@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Esercizio 1: Gestione Punteggi Squadra di E-Sports</title>
+</head>
+<body>
+    <script>
+
+        const giocatori = [ 
+            {nome: "Andrea", puntiBase: 50, prestazione: [10,20,15]},
+            {nome: "Luca", puntiBase: 40, prestazione: [5,25,10]},
+            {nome: "Marco", puntiBase: 60, prestazione: [20,15,5]}];
+        
+        function AggiornaPunti(puntiBase, ...altriPunti) {
+            let totale = puntiBase;
+
+            for (let i=0; i<altriPunti.length; i++) {
+                totale += altriPunti[i];
+            }
+            return totale;
+        }
+
+        for (let i=0; i<giocatori.length; i++) {
+            const totale = AggiornaPunti(giocatori[i].puntiBase, ...giocatori[i].prestazione);
+            console.log(giocatori[i].nome+": " +totale+" punti");
+        }
+
+    </script>
+</body>
+</html>
